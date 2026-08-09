@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Russell Taga-an | Resume</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  background:#eef2f7;
+  color:#132238;
+  padding:18px;
+}
+.resume{
+  position:relative;
+  width:min(1500px,100%);
+  height:calc(100vh - 36px);
+  margin:auto;
+  background:white;
+  border:1px solid #dfe7f0;
+  border-radius:24px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:32% 68%;
+  box-shadow:0 28px 80px rgba(27,46,74,.14);
+}
+.resume:before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,#17324d 0%,#5b5bd6 48%,#14b8a6 100%);
+  z-index:10;
+}
+.sidebar{
+  background:
+    radial-gradient(circle at 12% 10%,rgba(91,91,214,.18),transparent 34%),
+    radial-gradient(circle at 88% 88%,rgba(20,184,166,.12),transparent 30%),
+    linear-gradient(160deg,#f7f9fc 0%,#edf3f8 100%);
+  border-right:1px solid #dfe7f0;
+  padding:clamp(24px,3vw,44px);
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+.name{
+  font-size:clamp(28px,3.2vw,48px);
+  line-height:.95;
+  letter-spacing:-2px;
+  margin-bottom:10px;
+}
+.role{
+  color:#5b5bd6;
+  font-weight:800;
+  font-size:clamp(12px,1.1vw,16px);
+  margin-bottom:18px;
+}
+.contact{
+  display:grid;
+  gap:7px;
+  font-size:clamp(10px,.85vw,12px);
+  color:#647487;
+  line-height:1.35;
+}
+.contact a{color:inherit;text-decoration:none}
+.rule{height:1px;background:#dce5ef;margin:22px 0}
+.side-title,
+.section-title{
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:clamp(9px,.75vw,11px);
+  color:#8595a8;
+  font-weight:800;
+  margin-bottom:10px;
+}
+.summary{
+  color:#5f6f82;
+  font-size:clamp(10px,.88vw,13px);
+  line-height:1.55;
+}
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.skill{
+  border:1px solid #dfe7f0;
+  background:#edf2f7;
+  border-radius:8px;
+  padding:6px 9px;
+  font-size:clamp(9px,.75vw,11px);
+  font-weight:700;
+}
+.info-list{
+  display:grid;
+  gap:8px;
+  font-size:clamp(9px,.76vw,11px);
+  color:#647487;
+  line-height:1.35;
+}
+.info-list strong{display:block;color:#17324d;margin-bottom:2px}
+.languages{display:flex;gap:10px;flex-wrap:wrap}
+.lang{
+  border:1px solid #cfd9e5;
+  background:#fff;
+  border-radius:10px;
+  padding:8px 10px;
+  font-size:clamp(9px,.75vw,11px);
+}
+.sidebar-bottom{margin-top:auto}
+.main{
+  padding:clamp(24px,3vw,42px);
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  margin-bottom:16px;
+}
+.heading h2{
+  font-size:clamp(24px,2.4vw,36px);
+  letter-spacing:-1.2px;
+}
+.heading p{
+  margin-top:5px;
+  color:#6f7f91;
+  font-size:clamp(10px,.85vw,12px);
+}
+.download{
+  transition:.2s ease;
+  padding:9px 14px;
+  border-radius:9px;
+  background:#17324d;
+  color:#fff;
+  text-decoration:none;
+  font-size:clamp(10px,.8vw,12px);
+  font-weight:700;
+  white-space:nowrap;
+}
+.download:hover{background:#5b5bd6;transform:translateY(-1px)}
+.timeline{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  min-height:0;
+  flex:1;
+}
+.job{
+  box-shadow:0 5px 18px rgba(23,50,77,.035);
+  border:1px solid #dfe7f0;
+  border-radius:15px;
+  padding:clamp(12px,1.35vw,18px);
+  min-width:0;
+  background:#fff;
+  overflow:hidden;
+}
+.job.featured{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:32% 68%;
+  gap:16px;
+  background:linear-gradient(135deg,#f5f7ff,#ffffff);
+}
+.job-head h3{
+  font-size:clamp(13px,1.15vw,16px);
+  line-height:1.2;
+  margin-bottom:5px;
+}
+.company{
+  font-size:clamp(9px,.8vw,11px);
+  color:#6f7f91;
+  line-height:1.35;
+}
+.dates{
+  display:inline-block;
+  margin-top:8px;
+  padding:5px 8px;
+  border-radius:100px;
+  background:#edf2f7;
+  color:#5f6f82;
+  font-size:clamp(8px,.68vw,10px);
+  font-weight:700;
+}
+.job ul{
+  list-style:none;
+  display:grid;
+  gap:5px;
+  margin-top:10px;
+}
+.job li{
+  position:relative;
+  padding-left:12px;
+  color:#5d5d5d;
+  font-size:clamp(9px,.74vw,11px);
+  line-height:1.35;
+}
+.job li:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.48em;
+  width:4px;height:4px;
+  border-radius:50%;
+  background:#5b5bd6;
+}
+.job.featured ul{
+  margin-top:0;
+  grid-template-columns:1fr 1fr;
+  column-gap:16px;
+}
+.meta{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.meta-card{
+  border:1px solid #dfe7f0;
+  border-radius:12px;
+  padding:10px 12px;
+}
+.meta-card strong{
+  font-size:clamp(10px,.82vw,12px);
+  display:block;
+  margin-bottom:4px;
+}
+.meta-card span{
+  color:#6f7f91;
+  font-size:clamp(8px,.68vw,10px);
+  line-height:1.3;
+}
+@media(max-height:760px){
+  body{padding:10px}
+  .resume{height:calc(100vh - 20px)}
+  .sidebar,.main{padding-top:22px;padding-bottom:22px}
+  .rule{margin:15px 0}
+  .download:hover{background:#5b5bd6;transform:translateY(-1px)}
+.timeline{gap:9px}
+  .job{padding:11px}
+  .job li{line-height:1.28}
+}
+@media(max-width:900px){
+  .resume{grid-template-columns:35% 65%;border-radius:16px}
+  .sidebar{padding:20px}
+  .main{padding:20px}
+  .job.featured{grid-template-columns:1fr}
+  .job.featured ul{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="resume">
+
+  <aside class="sidebar">
+    <div>
+      <h1 class="name">Russell<br>Taga-an</h1>
+      <div class="role">E-commerce Virtual Assistant</div>
+
+      <div class="contact">
+        <a href="mailto:tagaan01@gmail.com">tagaan01@gmail.com</a>
+        <span>+63 929 6937 829</span>
+        <span>Malabon City, Philippines</span>
+        <span>LinkedIn — Russell T.</span>
+        <span>Upwork — Russell T.</span>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="side-title">Profile</div>
+      <p class="summary">
+        Detail-oriented Virtual Assistant experienced in data management,
+        lead generation, Shopify, WooCommerce and Home Depot product uploading.
+        Skilled in structured workflows, quality checks, spreadsheets, and
+        creative editing for remote e-commerce teams.
+      </p>
+
+      <div class="rule"></div>
+
+      <div class="side-title">Tech Stack</div>
+      <div class="skills">
+        <span class="skill">Shopify</span>
+        <span class="skill">WooCommerce</span>
+        <span class="skill">WordPress</span>
+        <span class="skill">Google Sheets</span>
+        <span class="skill">Excel</span>
+        <span class="skill">Photoshop</span>
+        <span class="skill">Canva</span>
+        <span class="skill">Premiere Pro</span>
+        <span class="skill">DaVinci Resolve</span>
+        <span class="skill">CapCut</span>
+        <span class="skill">ChatGPT</span>
+        <span class="skill">Trello</span>
+        <span class="skill">Notion</span>
+      </div>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="rule"></div>
+
+      <div class="side-title">Remote Work Ready</div>
+      <div class="info-list">
+        <div>
+          <strong>Internet</strong>
+          Converge Fiber 200 Mbps + Smart 5G backup
+        </div>
+        <div>
+          <strong>Equipment</strong>
+          MacBook Air M1, Windows PC, dual monitors, headset & HD webcam
+        </div>
+        <div>
+          <strong>Availability</strong>
+          Full-time / Part-time — EST, PST, GMT & AEST
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="side-title">Languages</div>
+      <div class="languages">
+        <div class="lang"><strong>English</strong><br>Fluent</div>
+        <div class="lang"><strong>Filipino</strong><br>Native</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="heading">
+        <div class="section-title">Professional Experience</div>
+        <h2>Experience built around<br>e-commerce operations.</h2>
+        <p>Product management, content preparation, customer support and creative production.</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><a class="download" href="index.html">Home</a><a class="download" href="contact.html">Hire Me</a><a class="download" href="Russell-T-Resume.pdf" target="_blank">PDF ↗</a></div>
+    </div>
+
+    <section class="timeline">
+      <article class="job featured">
+        <div class="job-head">
+          <h3>E-commerce Virtual Assistant / Product Uploader</h3>
+          <div class="company">Willow Bath and Vanity Inc.</div>
+          <span class="dates">Feb 2022 — Apr 2026</span>
+        </div>
+        <ul>
+          <li>Uploaded and managed hundreds of products across Home Depot, WooCommerce and Shopify.</li>
+          <li>Maintained accurate titles, descriptions, pricing, product details and variations.</li>
+          <li>Edited and optimized product images in Adobe Photoshop for web use.</li>
+          <li>Organized bulk product data, specifications and images with consistent formatting.</li>
+          <li>Performed quality checks on product details, images and categories.</li>
+          <li>Supported structured product-page workflows with a strong focus on accuracy.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>Videographer / Video Editor</h3>
+          <div class="company">Freelance</div>
+          <span class="dates">2023 — Present</span>
+        </div>
+        <ul>
+          <li>Filmed and edited wedding prenup videos and social-ready clips.</li>
+          <li>Handled color grading, audio syncing, transitions and final exports.</li>
+          <li>Managed footage organization and client delivery workflow.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>E-commerce Virtual Assistant</h3>
+          <div class="company">GekkoMultimedia</div>
+          <span class="dates">May 2021 — Sep 2021</span>
+        </div>
+        <ul>
+          <li>Managed product listings, details, pricing and images.</li>
+          <li>Assisted with marketing and promotional content.</li>
+          <li>Handled non-voice customer support and order concerns.</li>
+          <li>Processed orders and maintained organized records.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>Data Entry Assistant</h3>
+          <div class="company">Mobile Home Park Research — Remote Client</div>
+          <span class="dates">2019 — 2021</span>
+        </div>
+        <ul>
+          <li>Researched property owners, contact details and company records.</li>
+          <li>Verified business records through public and Secretary of State databases.</li>
+          <li>Maintained large structured datasets with consistent formatting.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="job-head">
+          <h3>Core Strengths</h3>
+          <div class="company">Remote E-commerce & Admin Work</div>
+        </div>
+        <div class="meta">
+          <div class="meta-card">
+            <strong>Accuracy</strong>
+            <span>Quality checks and structured product data.</span>
+          </div>
+          <div class="meta-card">
+            <strong>Adaptability</strong>
+            <span>Fast learning across tools and workflows.</span>
+          </div>
+          <div class="meta-card">
+            <strong>Creative Support</strong>
+            <span>Photo, video and content preparation.</span>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+</div>
+</body>
+</html>
