@@ -3,537 +3,597 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Russell Taga-an | E-commerce Virtual Assistant</title>
+<title>Russell Taga-an | Interactive Portfolio</title>
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    html, body {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        font-family: Inter, Arial, Helvetica, sans-serif;
-        background: #eef2f7;
-        color: #132238;
-    }
-
-    body {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: clamp(10px, 1.5vw, 24px);
-    }
-
-    .portfolio {
-        position: relative;
-        width: min(1400px, 100%);
-        height: calc(100vh - clamp(20px, 3vw, 48px));
-        max-height: 900px;
-        background: #ffffff;
-        border: 1px solid #dfe7f0;
-        border-radius: clamp(18px, 2vw, 28px);
-        overflow: hidden;
-        display: grid;
-        grid-template-columns: 42% 58%;
-        box-shadow: 0 28px 80px rgba(27,46,74,.14);
-    }
-
-    .portfolio::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #17324d 0%, #5b5bd6 48%, #14b8a6 100%);
-        z-index: 10;
-    }
-
-    .hero {
-        padding: clamp(28px, 4vh, 52px);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-width: 0;
-        background:
-            radial-gradient(circle at 12% 10%, rgba(99,102,241,.18), transparent 34%),
-            radial-gradient(circle at 88% 88%, rgba(20,184,166,.12), transparent 30%),
-            linear-gradient(160deg, #f7f9fc 0%, #edf3f8 100%);
-        border-right: 1px solid #dfe7f0;
-    }
-
-    .logo {
-        font-weight: 800;
-        font-size: clamp(16px, 1.4vw, 19px);
-        letter-spacing: -.5px;
-    }
-
-    .logo span {
-        color: #5b5bd6;
-    }
-
-    .hero-content {
-        max-width: 500px;
-    }
-
-    .available {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 7px 12px;
-        border: 1px solid #cdd8e5;
-        border-radius: 100px;
-        font-size: clamp(10px, .9vw, 12px);
-        font-weight: 600;
-        margin-bottom: clamp(16px, 2.6vh, 24px);
-        background: rgba(255,255,255,.82);
-    }
-
-    .dot {
-        width: 8px;
-        height: 8px;
-        background: #14b8a6;
-        border-radius: 50%;
-        flex: 0 0 auto;
-    }
-
-    h1 {
-        font-size: clamp(38px, 5vw, 72px);
-        line-height: .95;
-        letter-spacing: clamp(-4px, -.3vw, -2px);
-        margin-bottom: clamp(14px, 2vh, 22px);
-    }
-
-    h1 span {
-        color: #5b5bd6;
-    }
-
-    .intro {
-        color: #5f6f82;
-        line-height: 1.65;
-        font-size: clamp(12px, 1vw, 15px);
-        max-width: 470px;
-    }
-
-    .hero-buttons {
-        display: flex;
-        gap: 10px;
-        margin-top: clamp(18px, 3vh, 30px);
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        text-decoration: none;
-        padding: 11px 17px;
-        border-radius: 10px;
-        font-weight: 700;
-        font-size: clamp(12px, .95vw, 14px);
-        transition: .2s ease;
-        white-space: nowrap;
-    }
-
-    .btn-primary {
-        color: #fff;
-        background: #17324d;
-    }
-
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        background: #5b5bd6;
-        box-shadow: 0 10px 22px rgba(91,91,214,.22);
-    }
-
-    .btn-secondary {
-        border: 1px solid #cfd9e5;
-        color: #17324d;
-        background: #ffffff;
-    }
-
-    .hero-footer {
-        display: flex;
-        gap: clamp(14px, 2vw, 28px);
-        flex-wrap: wrap;
-    }
-
-    .metric strong {
-        font-size: clamp(17px, 1.6vw, 22px);
-    }
-
-    .metric p {
-        font-size: clamp(9px, .8vw, 11px);
-        color: #6f7f91;
-        margin-top: 3px;
-    }
-
-    .content {
-        padding: clamp(24px, 3.5vh, 46px);
-        display: grid;
-        grid-template-rows: auto auto minmax(0, 1fr);
-        gap: clamp(16px, 2.7vh, 30px);
-        min-width: 0;
-        overflow: hidden;
-    }
-
-    .section-label {
-        font-size: clamp(9px, .8vw, 11px);
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: #8595a8;
-        margin-bottom: 11px;
-        font-weight: 700;
-    }
-
-    .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 7px;
-    }
-
-    .skill {
-        border: 1px solid #dfe7f0;
-        background: #edf2f7;
-        padding: 7px 11px;
-        font-size: clamp(10px, .85vw, 12px);
-        border-radius: 8px;
-        font-weight: 600;
-    }
-
-    .experience-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-    }
-
-    .experience-card {
-        background: linear-gradient(180deg,#ffffff 0%,#fbfcfe 100%);
-        border: 1px solid #dfe7f0;
-        padding: clamp(12px, 1.4vw, 17px);
-        border-radius: 14px;
-        min-width: 0;
-    }
-
-    .experience-card h3 {
-        font-size: clamp(12px, 1vw, 14px);
-        margin-bottom: 6px;
-    }
-
-    .experience-card p {
-        font-size: clamp(9px, .78vw, 11px);
-        color: #747474;
-        line-height: 1.45;
-    }
-
-    .work {
-        min-height: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .projects {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        min-height: 0;
-        flex: 1;
-    }
-
-    .project {
-        position: relative;
-        overflow: hidden;
-        border-radius: 17px;
-        background: linear-gradient(145deg,#edf2f7,#e5edf5);
-        border: 1px solid #d9e3ed;
-        padding: clamp(16px, 2vw, 22px);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        min-height: 0;
-        transition: .25s ease;
-    }
-
-    .project:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0,0,0,.08);
-    }
-
-    .project::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            radial-gradient(circle at 82% 18%, rgba(91,91,214,.30), transparent 36%),
-            linear-gradient(135deg, rgba(23,50,77,.02), rgba(91,91,214,.08));
-    }
-
-    .project:nth-child(2)::before {
-        background:
-            radial-gradient(circle at 82% 18%, rgba(20,184,166,.28), transparent 36%),
-            linear-gradient(135deg, rgba(20,184,166,.03), rgba(23,50,77,.07));
-    }
-
-    .project-content {
-        position: relative;
-        z-index: 2;
-    }
-
-    .project small {
-        color: #74869a;
-        font-size: clamp(8px, .7vw, 10px);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .project h3 {
-        margin-top: 5px;
-        font-size: clamp(14px, 1.3vw, 18px);
-        letter-spacing: -.4px;
-    }
-
-    .project p {
-        font-size: clamp(9px, .8vw, 11px);
-        color: #647487;
-        margin-top: 5px;
-        line-height: 1.4;
-    }
-
-    @media (max-width: 980px) {
-        body {
-            padding: 10px;
-        }
-
-        .portfolio {
-        position: relative;
-            height: calc(100vh - 20px);
-            grid-template-columns: 39% 61%;
-        }
-
-        .hero {
-            padding: 24px;
-        }
-
-        .content {
-            padding: 22px;
-            gap: 14px;
-        }
-
-        .experience-grid {
-            gap: 8px;
-        }
-
-        .experience-card {
-        background: linear-gradient(180deg,#ffffff 0%,#fbfcfe 100%);
-            padding: 10px;
-        }
-
-        .project {
-            padding: 14px;
-        }
-    }
-
-    @media (max-width: 760px) {
-        .portfolio {
-        position: relative;
-            grid-template-columns: 1fr;
-            grid-template-rows: 42% 58%;
-        }
-
-        .hero {
-            border-right: none;
-            border-bottom: 1px solid #eeeeee;
-            padding: 18px 20px;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px 20px;
-            align-items: end;
-            max-width: none;
-        }
-
-        .available {
-            grid-column: 1 / -1;
-            margin-bottom: 0;
-            width: max-content;
-        }
-
-        h1 {
-            font-size: clamp(34px, 8vw, 52px);
-            margin-bottom: 0;
-        }
-
-        .intro {
-            font-size: 11px;
-        }
-
-        .hero-buttons {
-            margin-top: 8px;
-        }
-
-        .content {
-            padding: 16px 20px;
-            gap: 10px;
-        }
-
-        .experience-card p,
-        .project p {
-            display: none;
-        }
-
-        .skill {
-        border: 1px solid #dfe7f0;
-            padding: 5px 8px;
-            font-size: 9px;
-        }
-
-        .section-label {
-            margin-bottom: 7px;
-        }
-    }
-
-    @media (max-height: 720px) {
-        .hero {
-            padding-top: 22px;
-            padding-bottom: 22px;
-        }
-
-        .available {
-            margin-bottom: 14px;
-        }
-
-        .intro {
-            line-height: 1.5;
-        }
-
-        .content {
-            gap: 13px;
-        }
-
-        .section-label {
-            margin-bottom: 8px;
-        }
-
-        .skill {
-        border: 1px solid #dfe7f0;
-            padding-top: 6px;
-            padding-bottom: 6px;
-        }
-
-        .experience-card {
-        background: linear-gradient(180deg,#ffffff 0%,#fbfcfe 100%);
-            padding-top: 11px;
-            padding-bottom: 11px;
-        }
-    }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  background:#eef2f7;
+  color:#132238;
+  padding:18px;
+}
+.portfolio{
+  position:relative;
+  width:min(1400px,100%);
+  height:calc(100vh - 36px);
+  margin:auto;
+  background:#fff;
+  border:1px solid #dfe7f0;
+  border-radius:24px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:42% 58%;
+  box-shadow:0 28px 80px rgba(27,46,74,.14);
+}
+.portfolio:before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,#17324d,#5b5bd6 48%,#14b8a6);
+  z-index:20;
+}
+.hero{
+  padding:clamp(24px,3vw,40px);
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  background:
+    radial-gradient(circle at 12% 10%,rgba(91,91,214,.18),transparent 34%),
+    radial-gradient(circle at 90% 88%,rgba(20,184,166,.12),transparent 30%),
+    linear-gradient(160deg,#f7f9fc 0%,#edf3f8 100%);
+  border-right:1px solid #dfe7f0;
+}
+.logo{
+  font-weight:800;
+  font-size:18px;
+  margin-bottom:4px;
+}
+.logo span{color:#5b5bd6}
+.avatar-zone{
+  height:clamp(190px,27vh,275px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  perspective:900px;
+  margin:0 0 8px;
+  position:relative;
+}
+.avatar-glow{
+  position:absolute;
+  width:65%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(91,91,214,.18),rgba(20,184,166,.07) 48%,transparent 72%);
+  filter:blur(8px);
+}
+.avatar-card{
+  width:min(61%,250px);
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .16s ease-out;
+  will-change:transform;
+}
+.avatar-card img{
+  width:100%;
+  display:block;
+  pointer-events:none;
+  user-select:none;
+  filter:drop-shadow(0 18px 24px rgba(23,50,77,.18));
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 12px;
+  border:1px solid #cdd8e5;
+  border-radius:100px;
+  background:rgba(255,255,255,.82);
+  font-size:11px;
+  font-weight:700;
+  width:max-content;
+  margin-bottom:14px;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#14b8a6;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(20,184,166,.35)}
+  70%{box-shadow:0 0 0 8px rgba(20,184,166,0)}
+  100%{box-shadow:0 0 0 0 rgba(20,184,166,0)}
+}
+h1{
+  font-size:clamp(39px,4.6vw,66px);
+  line-height:.95;
+  letter-spacing:-3px;
+  margin-bottom:14px;
+}
+h1 span{color:#5b5bd6}
+.intro{
+  color:#5f6f82;
+  line-height:1.55;
+  font-size:clamp(11px,.95vw,14px);
+  max-width:500px;
+}
+.hero-buttons{
+  display:flex;
+  gap:10px;
+  margin-top:16px;
+  flex-wrap:wrap;
+}
+.btn{
+  text-decoration:none;
+  padding:11px 17px;
+  border-radius:10px;
+  font-weight:800;
+  font-size:12px;
+  transition:.2s ease;
+}
+.primary{background:#17324d;color:#fff}
+.primary:hover{background:#5b5bd6;transform:translateY(-2px)}
+.secondary{border:1px solid #cfd9e5;color:#17324d;background:#fff}
+.secondary:hover{border-color:#5b5bd6;color:#5b5bd6}
+.metrics{
+  margin-top:auto;
+  display:flex;
+  gap:clamp(18px,2.5vw,34px);
+  padding-top:14px;
+}
+.metric strong{display:block;font-size:clamp(18px,1.8vw,24px)}
+.metric span{color:#74869a;font-size:10px}
+.content{
+  padding:clamp(24px,3.5vw,46px);
+  display:grid;
+  grid-template-rows:auto auto 1fr;
+  gap:clamp(15px,2.5vh,28px);
+  overflow:hidden;
+}
+.section-label{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:#8595a8;
+  font-weight:800;
+  margin-bottom:10px;
+}
+.skills{display:flex;flex-wrap:wrap;gap:7px}
+.skill{
+  background:#edf2f7;
+  border:1px solid #dfe7f0;
+  padding:7px 11px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:700;
+  transition:.2s ease;
+}
+.skill:hover{transform:translateY(-2px);border-color:#5b5bd6;background:#f6f7ff}
+.experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.experience-card{
+  border:1px solid #dfe7f0;
+  background:linear-gradient(180deg,#fff,#fbfcfe);
+  padding:15px;
+  border-radius:14px;
+  transition:.2s ease;
+}
+.experience-card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(23,50,77,.07)}
+.experience-card h3{font-size:13px;margin-bottom:6px}
+.experience-card p{font-size:10px;color:#6f7f91;line-height:1.45}
+.work{min-height:0;display:flex;flex-direction:column}
+.projects{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.project{
+  position:relative;
+  overflow:hidden;
+  border-radius:17px;
+  border:1px solid #d9e3ed;
+  background:linear-gradient(145deg,#edf2f7,#e5edf5);
+  padding:18px;
+  display:flex;
+  align-items:flex-end;
+  transition:.25s ease;
+}
+.project:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 14px 28px rgba(23,50,77,.08)}
+.project:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 82% 18%,rgba(91,91,214,.30),transparent 36%);
+}
+.project:nth-child(2):before{
+  background:radial-gradient(circle at 82% 18%,rgba(20,184,166,.28),transparent 36%);
+}
+.project-content{position:relative;z-index:1}
+.project small{font-size:9px;color:#74869a;text-transform:uppercase;letter-spacing:1px}
+.project h3{font-size:17px;margin-top:5px}
+.project p{font-size:10px;color:#647487;margin-top:5px;line-height:1.4}
+.cursor-light{
+  position:absolute;
+  width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(91,91,214,.10),transparent 68%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  opacity:0;
+  transition:opacity .2s ease;
+  z-index:0;
+}
+.hero,.content{position:relative;z-index:1}
+
+@media(max-height:760px){
+  body{padding:10px}
+  .portfolio{height:calc(100vh - 20px)}
+  .hero,.content{padding-top:18px;padding-bottom:18px}
+  .avatar-zone{height:170px}
+  .avatar-card{width:min(54%,200px)}
+  h1{font-size:45px;margin-bottom:9px}
+  .intro{line-height:1.42}
+  .metrics{padding-top:8px}
+}
+@media(max-width:900px){
+  .portfolio{grid-template-columns:40% 60%}
+  .hero,.content{padding:20px}
+  .avatar-zone{height:180px}
+  .experience-card p,.project p{display:none}
+}
+
+/* ===== RESPONSIVE UPGRADE ===== */
+@media (min-width: 1101px) {
+  html, body { height: 100%; overflow: hidden; }
+  body { min-height: 100vh; }
+  .portfolio { height: calc(100vh - 36px); }
+}
+
+@media (max-width: 1100px) {
+  html, body {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  body {
+    min-height: 100vh;
+    padding: 14px;
+    display: block;
+  }
+
+  .portfolio {
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - 28px);
+    max-height: none;
+    grid-template-columns: 1fr;
+    border-radius: 20px;
+    overflow: visible;
+  }
+
+  .hero {
+    border-right: 0;
+    border-bottom: 1px solid #dfe7f0;
+    padding: 30px;
+  }
+
+  .content {
+    padding: 30px;
+    overflow: visible;
+  }
+
+  .avatar-zone {
+    height: clamp(220px, 34vw, 330px);
+  }
+
+  .avatar-card {
+    width: min(46vw, 280px);
+  }
+
+  h1 {
+    font-size: clamp(46px, 8vw, 74px);
+    max-width: 760px;
+  }
+
+  .intro {
+    max-width: 760px;
+    font-size: 14px;
+  }
+
+  .experience-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .projects {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 700px) {
+  body { padding: 8px; }
+
+  .portfolio {
+    min-height: calc(100vh - 16px);
+    border-radius: 16px;
+  }
+
+  .hero, .content {
+    padding: 22px 18px;
+  }
+
+  .avatar-zone {
+    height: 210px;
+    margin-bottom: 8px;
+  }
+
+  .avatar-card {
+    width: min(62vw, 230px);
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  h1 {
+    font-size: clamp(42px, 13vw, 62px);
+    line-height: .93;
+    letter-spacing: -2.5px;
+  }
+
+  .intro {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .hero-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .btn {
+    text-align: center;
+    padding: 12px 14px;
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  .metric strong { font-size: 20px; }
+
+  .metric span {
+    font-size: 9px;
+    line-height: 1.25;
+    display: block;
+  }
+
+  .skill {
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card p,
+  .project p {
+    display: block;
+    font-size: 11px;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .project {
+    min-height: 180px;
+  }
+
+  .cursor-light { display: none; }
+}
+
+@media (max-width: 430px) {
+  .hero, .content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .avatar-zone { height: 190px; }
+
+  .avatar-card {
+    width: min(68vw, 210px);
+  }
+
+  h1 {
+    font-size: clamp(39px, 14vw, 54px);
+  }
+
+  .hero-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics { gap: 6px; }
+
+  .metric strong { font-size: 18px; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .skill:hover,
+  .experience-card:hover,
+  .project:hover,
+  .btn:hover {
+    transform: none;
+  }
+}
+
+
+/* ===== FULL VIEWPORT ===== */
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.portfolio {
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+}
+
+/* Keep mobile responsive while filling the available width */
+@media (max-width: 1100px) {
+  html, body {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .portfolio {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+}
+
 </style>
 </head>
-
 <body>
-<div class="portfolio">
-    <section class="hero">
-        <div class="logo">Russell<span>.</span></div>
+<div class="portfolio" id="portfolio">
+  <div class="cursor-light" id="cursorLight"></div>
 
-        <div class="hero-content">
-            <div class="available">
-                <span class="dot"></span>
-                Available for Remote Work
-            </div>
+  <section class="hero">
+    <div class="logo">Russell<span>.</span></div>
 
-            <div>
-                <h1>E-commerce<br><span>made easier.</span></h1>
+    <div class="avatar-zone" id="avatarZone">
+      <div class="avatar-glow"></div>
+      <div class="avatar-card" id="avatarCard">
+        <img src="assets/russell-chibi.png" alt="Chibi avatar of Russell">
+      </div>
+    </div>
 
-                <p class="intro">
-                    I'm Russell, an E-commerce Virtual Assistant with 4+ years of experience
-                    managing Shopify and WooCommerce stores. I help businesses organize
-                    products, maintain accurate listings, manage inventory, process orders,
-                    and keep daily store operations running smoothly.
-                </p>
+    <div class="badge">
+      <span class="dot"></span>
+      Available for Remote Work
+    </div>
 
-                <div class="hero-buttons">
-                    <a href="contact.html" class="btn btn-primary">Hire Me →</a>
-                    <a href="resume.html" class="btn btn-secondary">View Resume</a>
-                </div>
-            </div>
+    <h1>E-commerce<br><span>made easier.</span></h1>
+
+    <p class="intro">
+      I'm Russell, an E-commerce Virtual Assistant with 4+ years of experience
+      managing Shopify and WooCommerce stores. I help businesses organize products,
+      maintain accurate listings, manage inventory, process orders, and keep daily
+      store operations running smoothly.
+    </p>
+
+    <div class="hero-buttons">
+      <a class="btn primary" href="contact.html">Hire Me →</a>
+      <a class="btn secondary" href="resume.html">View Resume</a>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><strong>4+</strong><span>Years Experience</span></div>
+      <div class="metric"><strong>3K+</strong><span>Products Managed</span></div>
+      <div class="metric"><strong>100%</strong><span>Remote Ready</span></div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div>
+      <div class="section-label">Core Skills</div>
+      <div class="skills">
+        <span class="skill">Shopify</span>
+        <span class="skill">WooCommerce</span>
+        <span class="skill">Product Listings</span>
+        <span class="skill">Inventory</span>
+        <span class="skill">Order Fulfillment</span>
+        <span class="skill">SEO</span>
+        <span class="skill">Photoshop</span>
+        <span class="skill">AI Tools</span>
+        <span class="skill">Google Sheets</span>
+        <span class="skill">Customer Support</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">What I Do</div>
+      <div class="experience-grid">
+        <div class="experience-card"><h3>Store Management</h3><p>Products, variants, collections, inventory, metafields and store operations.</p></div>
+        <div class="experience-card"><h3>Product Content</h3><p>Titles, descriptions, SEO fields, image preparation and structured product data.</p></div>
+        <div class="experience-card"><h3>Operations</h3><p>Order processing, spreadsheets, non-voice support and research.</p></div>
+      </div>
+    </div>
+
+    <div class="work">
+      <div class="section-label">Selected Work</div>
+      <div class="projects">
+        <div class="project">
+          <div class="project-content">
+            <small>Shopify Catalog</small>
+            <h3>3,000+ Product Store</h3>
+            <p>Product cleanup, classifications, descriptions, metafields and SEO.</p>
+          </div>
         </div>
-
-        <div class="hero-footer">
-            <div class="metric">
-                <strong>4+</strong>
-                <p>Years Experience</p>
-            </div>
-            <div class="metric">
-                <strong>3K+</strong>
-                <p>Products Managed</p>
-            </div>
-            <div class="metric">
-                <strong>100%</strong>
-                <p>Remote Ready</p>
-            </div>
+        <div class="project">
+          <div class="project-content">
+            <small>E-commerce Operations</small>
+            <h3>Multi-platform Management</h3>
+            <p>Shopify, WooCommerce, inventory, orders and product maintenance.</p>
+          </div>
         </div>
-    </section>
-
-    <section class="content">
-        <div>
-            <div class="section-label">Core Skills</div>
-            <div class="skills">
-                <span class="skill">Shopify</span>
-                <span class="skill">WooCommerce</span>
-                <span class="skill">Product Listings</span>
-                <span class="skill">Inventory</span>
-                <span class="skill">Order Fulfillment</span>
-                <span class="skill">SEO</span>
-                <span class="skill">Photoshop</span>
-                <span class="skill">AI Tools</span>
-                <span class="skill">Google Sheets</span>
-                <span class="skill">Customer Support</span>
-            </div>
-        </div>
-
-        <div>
-            <div class="section-label">What I Do</div>
-            <div class="experience-grid">
-                <div class="experience-card">
-                    <h3>Store Management</h3>
-                    <p>Products, variants, collections, inventory, metafields and day-to-day Shopify operations.</p>
-                </div>
-
-                <div class="experience-card">
-                    <h3>Product Content</h3>
-                    <p>Titles, descriptions, SEO fields, image preparation and structured product data.</p>
-                </div>
-
-                <div class="experience-card">
-                    <h3>Operations</h3>
-                    <p>Order processing, spreadsheet management, non-voice customer support and research.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="work">
-            <div class="section-label">Selected Work</div>
-            <div class="projects">
-                <div class="project">
-                    <div class="project-content">
-                        <small>Shopify Catalog</small>
-                        <h3>3,000+ Product Store</h3>
-                        <p>Product cleanup, classifications, descriptions, metafields and SEO.</p>
-                    </div>
-                </div>
-
-                <div class="project">
-                    <div class="project-content">
-                        <small>E-commerce Operations</small>
-                        <h3>Multi-platform Management</h3>
-                        <p>Shopify, WooCommerce, inventory, orders and product maintenance.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </div>
+
+<script>
+const avatarZone = document.getElementById('avatarZone');
+const avatarCard = document.getElementById('avatarCard');
+const portfolio = document.getElementById('portfolio');
+const cursorLight = document.getElementById('cursorLight');
+
+avatarZone.addEventListener('mousemove', (e) => {
+  const rect = avatarZone.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width - 0.5;
+  const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+  const rotateY = x * 16;
+  const rotateX = -y * 12;
+  const moveX = x * 8;
+  const moveY = y * 6;
+
+  avatarCard.style.transform =
+    `translate3d(${moveX}px, ${moveY}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+});
+
+avatarZone.addEventListener('mouseleave', () => {
+  avatarCard.style.transform = 'translate3d(0,0,0) rotateX(0deg) rotateY(0deg)';
+});
+
+portfolio.addEventListener('mousemove', (e) => {
+  const rect = portfolio.getBoundingClientRect();
+  cursorLight.style.left = `${e.clientX - rect.left}px`;
+  cursorLight.style.top = `${e.clientY - rect.top}px`;
+  cursorLight.style.opacity = '1';
+});
+
+portfolio.addEventListener('mouseleave', () => {
+  cursorLight.style.opacity = '0';
+});
+</script>
 </body>
 </html>
